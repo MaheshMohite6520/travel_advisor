@@ -8,7 +8,7 @@ import mapStyles from '../../mapStyles.js';
 import useStyles from './styles.js';
 
 const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherData }) => {
-  const matches = useMediaQuery('(min-width:600px)');
+  const isMobile = useMediaQuery('(min-width:600px)');
   const classes = useStyles();
 
   return (
@@ -30,17 +30,17 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
           <div
             className={classes.markerContainer}
             lat={Number(place.latitude)}
-            lng={Number(place.longitude)}
+            lng={Number(place.longitude)}   
             key={i}
           >
-            {!matches
+            {!isMobile
               ? <LocationOnOutlinedIcon color="primary" fontSize="large" />
               : (
                 <Paper elevation={3} className={classes.paper}>
                   <Typography className={classes.typography} variant="subtitle2" gutterBottom> {place.name}</Typography>
                   <img
                     className={classes.pointer}
-                    src={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
+                    src={place.photo ? place.photo.images.large.url : 'https://tse1.mm.bing.net/th?id=OIP.aIDRCgXlDcPc1JGZ0K6N4QHaE8&pid=Api&P=0&h=180'}
                   />
                   <Rating name="read-only" size="small" value={Number(place.rating)} readOnly />
                 </Paper>

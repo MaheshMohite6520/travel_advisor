@@ -28,8 +28,8 @@ export const getWeatherData = async (lat, lng) => {
       const { data } = await axios.get('https://open-weather13.p.rapidapi.com/city/latlon/30.438/-89.1028', {
         params: { lat: lat, lon: lng },
         headers: {
-            'X-RapidAPI-Key': 'b98e60e025msha4d33f7c031168ap149692jsn0ebde160ae30',
-            'X-RapidAPI-Host': 'open-weather13.p.rapidapi.com'
+          'X-RapidAPI-Key': 'b98e60e025msha4d33f7c031168ap149692jsn0ebde160ae30',
+          'X-RapidAPI-Host': 'travel-advisor.p.rapidapi.com'
         },
       });
 

@@ -48,7 +48,7 @@ const App = () => {
           setIsLoading(false);
         });
     }
-  }, [bounds, type]);
+  }, [type]);
 
   const onLoad = (autoC) => setAutocomplete(autoC);
 
