@@ -4,17 +4,17 @@ import { Paper, Typography, useMediaQuery } from '@material-ui/core';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import Rating from '@material-ui/lab/Rating';
 
-import mapStyles from '../../mapStyles.js';
+import mapStyles from '../../mapStyles';
 import useStyles from './styles.js';
 
 const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherData }) => {
-  const isMobile = useMediaQuery('(min-width:600px)');
+  const matches = useMediaQuery('(min-width:600px)');
   const classes = useStyles();
 
   return (
     <div className={classes.mapContainer}>
       <GoogleMapReact
-        bootstrapURLKeys='AIzaSyB3TJH7YzfDRwkkITJQyNylIBVyq5_nLGA'
+        bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
         defaultCenter={coords}
         center={coords}
         defaultZoom={14}
@@ -30,17 +30,17 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
           <div
             className={classes.markerContainer}
             lat={Number(place.latitude)}
-            lng={Number(place.longitude)}   
+            lng={Number(place.longitude)}
             key={i}
           >
-            {!isMobile
+            {!matches
               ? <LocationOnOutlinedIcon color="primary" fontSize="large" />
               : (
                 <Paper elevation={3} className={classes.paper}>
                   <Typography className={classes.typography} variant="subtitle2" gutterBottom> {place.name}</Typography>
                   <img
                     className={classes.pointer}
-                    src={place.photo ? place.photo.images.large.url : 'https://tse1.mm.bing.net/th?id=OIP.aIDRCgXlDcPc1JGZ0K6N4QHaE8&pid=Api&P=0&h=180'}
+                    src={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
                   />
                   <Rating name="read-only" size="small" value={Number(place.rating)} readOnly />
                 </Paper>
